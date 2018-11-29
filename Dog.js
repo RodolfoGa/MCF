@@ -5,5 +5,5 @@ class Dog(){
     	this.damage = damage;
     }
 }
-    var dog = new Object("Doggo", 10, 5);
+    var dog = new Object("Doggo", 100, 10);
 
