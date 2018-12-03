@@ -1,11 +1,11 @@
 /**
  *
  */
-var canvas = document.querySelector(".myCanvas");
-var width = canvas.width = window.innerWidth;
-var height = canvas.height = window.innerHeight;
+let canvas = document.querySelector(".myCanvas");
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
 
-var ctx = canvas.getContext('2d');
+let ctx = canvas.getContext('2d');
 
 function degToRad(degrees) {
 	  return degrees * Math.PI / 180;
@@ -16,17 +16,17 @@ ctx.fillRect(0, 0, width, height);
 
 ctx.translate(width/2, height/2);
 
-var image = new Image();
-image.src = '../img/walk-right.png';
+let image = new Image();
+image.src = 'img/walk-right.png';
 image.onload = drawRight;
 
-var image2 = new Image();
-image2.src = '../img/walk-left.png';
+let image2 = new Image();
+image2.src = 'img/walk-left.png';
 image.onload = drawLeft;
 
-var sprite = 0;
-var posX = 0;
-var refreshrate = 13;
+let sprite = 0;
+let posX = 0;
+let refreshrate = 13;
 
 
 function drawRight() {
@@ -69,7 +69,7 @@ function drawLeft() {
 	  }
 };
 
-var keyState = {};
+let keyState = {};
 window.addEventListener('keydown',function(e){
     keyState[e.keyCode || e.which] = true;
 },true);

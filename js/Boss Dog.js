@@ -4,5 +4,5 @@ function BossDog(){
     this.health = health;
     this.damage = damage;
 }
-    var bossdog = new Object("Big Doggo", 1000, 50);
+    let bossdog = new Object("Big Doggo", 1000, 50);
     
