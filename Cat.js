@@ -1,9 +1,11 @@
 function Cat(){
-    
+    constructor(name, health, damage)
+    this.name = name;
+    this.health = health;
+    this.damage = damage;
 }
-    var cat = new Object();
-    cat.name = "";
-    cat.age = "4";
+    var cat = new Object("Catto",100,10);
+   
 
 
 
