@@ -1,4 +1,4 @@
-class Dog(){
+class Dog{
     constructor(name, health, damage){
     	this.name = name;
     	this.health = health;
