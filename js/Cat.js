@@ -3,7 +3,7 @@ class Cat{
     this.name = name;
     this.health = health;
     this.damage = damage;
-    }
+    } 
 }
     let cat = new Object("Catto",100,10);
    

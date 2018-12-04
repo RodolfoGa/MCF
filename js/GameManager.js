@@ -1,6 +1,3 @@
-/**
- */
-
 let canvas = document.querySelector(".myCanvas");
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
@@ -10,6 +7,8 @@ let ctx = canvas.getContext('2d');
 function degToRad(degrees) {
 	  return degrees * Math.PI / 180;
 	};
+
+cat = new Cat("Catto", 100, 10);
 
 let sprite = 0;
 let posX = width/2 + 85 ;
@@ -31,64 +30,37 @@ window.onload = function(){
 	ctx.translate(width/2, height/2);
 	ctx.drawImage(bgImage, -posX, -posY);
 	ctx.drawImage(image, (sprite*102), 0, 102, 148, 0, -74, 51, 74);
-}
+	ctx.fillRect(-15, -90, 80, 10);
+	ctx.fillStyle = 'rgb(255, 0, 0)';
+	ctx.fillRect(-15, -90, (cat.health/100)*80, 10);
+};
 
 function drawRight() {
+	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.fillRect(-(width/2), -(height/2), width, height);
-	ctx.drawImage(bgImage, -posX, -posY);
-	ctx.drawImage(image, (sprite*102), 0, 102, 148, 0, -74, 51, 74);
-	if (posX % refreshrate === 0) {
-	    if (sprite === 5) {
-	      sprite = 0;
-	    } else {
-	      sprite++;
-	    }
-	  }
-	    posX += 6;
-	    console.log(posX);
+	walkRight();
+	drawHealth();
 };
 
 function drawLeft() {
+	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.fillRect(-(width/2), -(height/2), width, height);
-	ctx.drawImage(bgImage, -posX, -posY);
-	ctx.drawImage(image2, (sprite*102), 0, 102, 148, 0, -74, 54, 74);
-	if (posX % refreshrate === 0) {
-	    if (sprite === 0) {
-	      sprite = 5;
-	    } else {
-	      sprite--;
-	    }
-	  }
-	    posX -= 6;
-	    console.log(posX);
+	walkLeft();
+	drawHealth();
 };
 
 function drawUp() {
+	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.fillRect(-(width/2), -(height/2), width, height);
-	ctx.drawImage(bgImage, -posX, -posY);
-	ctx.drawImage(image2, (sprite*102), 0, 102, 148, 0, -74, 54, 74);
-	if (posX % refreshrate === 0) {
-	    if (sprite === 0) {
-	      sprite = 5;
-	    } else {
-	      sprite--;
-	    }
-	  }
-	    posY -= 6;
+	walkUp();
+	drawHealth();
 };
 
 function drawDown() {
+	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.fillRect(-(width/2), -(height/2), width, height);
-	ctx.drawImage(bgImage, -posX, -posY);
-	ctx.drawImage(image2, (sprite*102), 0, 102, 148, 0, -74, 54, 74);
-	if (posX % refreshrate === 0) {
-	    if (sprite === 0) {
-	      sprite = 5;
-	    } else {
-	      sprite--;
-	    }
-	  }
-	    posY += 6;
+	walkDown();
+	drawHealth();
 };
 
 let keyState = {};
@@ -100,17 +72,25 @@ window.addEventListener('keyup',function(e){
 },true);
 
 function gameLoop() {
+		//left arrow, A
     if (keyState[37] || keyState[65]){
     	window.requestAnimationFrame(drawLeft);
-    }
+		}
+		//right arrow, D
     if (keyState[39] || keyState[68]){
     	window.requestAnimationFrame(drawRight);
 		}
+		//Up arrow, W
 		if (keyState[38] || keyState[87]){
     	window.requestAnimationFrame(drawUp);
 		}
+		//Down arrow, S
 		if (keyState[40] || keyState[83]){
     	window.requestAnimationFrame(drawDown);
+		}
+		//esc key
+		if (keyState[27]){
+    	window.requestAnimationFrame(drawMenu);
     }
     setTimeout(gameLoop, 10);
 }
